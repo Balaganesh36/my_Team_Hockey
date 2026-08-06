@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'core/theme/app_theme.dart';
+import 'features/home/home_page.dart';
+import 'features/matches/matches_page.dart';
+import 'features/players/players_page.dart';
+import 'features/videos/highlights_page.dart';
+import 'features/profile/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,71 +13,107 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bala App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-      ),
-      home: const MyHomePage(title: 'Teacher welcome to Hosur'),
+      debugShowCheckedModeBanner: false,
+      title: 'My Team Hockey',
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark, // Default to dark for premium look
+      home: const MainScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MainScreenState extends State<MainScreen> {
+  int _selectedIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final List<Widget> _pages = [
+    const HomePage(),
+    const MatchesPage(),
+    const HighlightsPage(),
+    const PlayersPage(),
+    const ProfilePage(),
+  ];
+
+  final List<String> _titles = [
+    "HOME",
+    "MATCHES",
+    "HIGHLIGHTS",
+    "PLAYERS",
+    "PROFILE",
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('Anand payalugggga da:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        title: Text(
+          _titles[_selectedIndex],
+          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+            letterSpacing: 2,
+            fontWeight: FontWeight.w900,
+          ),
         ),
+        centerTitle: true,
+        actions: [
+          if (_selectedIndex == 3)
+            IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.notifications_none),
+            onPressed: () {},
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'anand',
-        child: const Icon(Icons.sports_hockey_sharp),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: _pages[_selectedIndex],
+      ),
+      bottomNavigationBar: NavigationBar(
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        height: 80,
+        elevation: 10,
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home, color: Color(0xFF1565C0)),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.emoji_events_outlined),
+            selectedIcon: Icon(Icons.emoji_events, color: Color(0xFF1565C0)),
+            label: 'Matches',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.play_circle_outline),
+            selectedIcon: Icon(Icons.play_circle, color: Color(0xFF1565C0)),
+            label: 'Videos',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.group_outlined),
+            selectedIcon: Icon(Icons.group, color: Color(0xFF1565C0)),
+            label: 'Players',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outline),
+            selectedIcon: Icon(Icons.person, color: Color(0xFF1565C0)),
+            label: 'Profile',
+          ),
+        ],
+      ),
     );
   }
 }
