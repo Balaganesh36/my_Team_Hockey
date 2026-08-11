@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_constants.dart';
 import '../../shared/widgets/app_widgets.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,67 +6,87 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Hero Section / Live Score
-          _buildLiveScore(context),
-
-          const SectionHeader(title: "Upcoming Events"),
-          _buildEventsList(),
-
-          const SectionHeader(title: "Top Highlights"),
-          _buildHighlightsList(context),
-
-          const SizedBox(height: 20),
+    return Scaffold(
+      appBar: ModernAppBar(
+        title: 'Platform',
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.notifications_none_rounded),
+            onPressed: () {},
+          ),
+          const SizedBox(width: 8),
+          const CircleAvatar(
+            radius: 16,
+            backgroundColor: Color(0xFF1A1A1A),
+            child: Icon(Icons.person, size: 20, color: Colors.white54),
+          ),
+          const SizedBox(width: 16),
         ],
       ),
-    );
-  }
-
-  Widget _buildLiveScore(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: GlassCard(
-        padding: const EdgeInsets.all(24),
-        opacity: 0.8,
-        borderRadius: 32,
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              'Live Match',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 16),
+            const MatchCard(
+              match: {
+                'homeTeam': 'PPG',
+                'awayTeam': 'TIGERS',
+                'score': '3 - 2',
+                'competition': 'Local Tournament',
+                'location': 'PPG Hockey Ground',
+              },
+              isHero: true,
+            ),
+            const SizedBox(height: 24),
             Row(
+              children: [
+                _buildQuickAction(
+                  context,
+                  Icons.add_circle_outline_rounded,
+                  'Create Match',
+                ),
+                const SizedBox(width: 12),
+                _buildQuickAction(context, Icons.stream_rounded, 'Go Live'),
+                const SizedBox(width: 12),
+                _buildQuickAction(
+                  context,
+                  Icons.analytics_outlined,
+                  'AI Analytics',
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildLiveIndicator(),
-                const Text(
-                  "2nd Period",
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildTeamScore("PPG", "assets/images/download.jpeg", "3"),
                 Text(
-                  ":",
-                  style: Theme.of(
-                    context,
-                  ).textTheme.displayMedium?.copyWith(color: Colors.white),
+                  'Recent Intelligence',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                _buildTeamScore("TIGERS", null, "2"),
+                Text(
+                  'See All',
+                  style: TextStyle(color: Color(0xFF39FF14), fontSize: 14),
+                ),
               ],
             ),
-            const SizedBox(height: 24),
-            const Divider(color: Colors.white24),
-            const SizedBox(height: 12),
-            const Text(
-              "PPG Hockey Turf, Coimbatore",
-              style: TextStyle(color: Colors.white60, fontSize: 12),
+            const SizedBox(height: 16),
+            const AIInsightCard(
+              title: 'Performance Spike',
+              content:
+                  'Team speed increased by 12% in the second half of the last match.',
+              icon: Icons.trending_up_rounded,
+            ),
+            const AIInsightCard(
+              title: 'Tactical Shift',
+              content:
+                  'Opposition changed to a 3-4-3 formation. Defensive response was optimal.',
+              icon: Icons.psychology_rounded,
             ),
           ],
         ),
@@ -75,110 +94,24 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildLiveIndicator() {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      decoration: BoxDecoration(
-        color: Colors.red.withValues(alpha: 0.2),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.red),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: 8,
-            height: 8,
-            decoration: const BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-            ),
-          ),
-          const SizedBox(width: 8),
-          const Text(
-            "LIVE",
-            style: TextStyle(
-              color: Colors.red,
-              fontWeight: FontWeight.bold,
-              fontSize: 12,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTeamScore(String name, String? logo, String score) {
-    return Column(
-      children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.white10,
-          backgroundImage: logo != null ? AssetImage(logo) : null,
-          child: logo == null
-              ? const Icon(Icons.sports_hockey, color: Colors.white)
-              : null,
+  Widget _buildQuickAction(BuildContext context, IconData icon, String label) {
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1A1A1A),
+          borderRadius: BorderRadius.circular(16),
         ),
-        const SizedBox(height: 12),
-        Text(
-          name,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          score,
-          style: const TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.w900,
-            fontSize: 32,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildEventsList() {
-    return SizedBox(
-      height: 160,
-      child: ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        scrollDirection: Axis.horizontal,
-        itemCount: AppConstants.upcomingEvents.length,
-        itemBuilder: (context, index) {
-          final event = AppConstants.upcomingEvents[index];
-          return Container(
-            width: 280,
-            margin: const EdgeInsets.symmetric(horizontal: 8),
-            child: NewsCard(
-              title: event['title'],
-              date: "${event['date']} • ${event['time']}",
-              imageUrl: "assets/images/images.jpeg",
+        child: Column(
+          children: [
+            Icon(icon, color: const Color(0xFF39FF14)),
+            const SizedBox(height: 8),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 10, fontWeight: FontWeight.w600),
             ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildHighlightsList(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: AppConstants.highlights.map((h) {
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 16),
-            child: VideoCard(
-              highlight: h,
-              onTap: () {
-                // Navigate to video player
-              },
-            ),
-          );
-        }).toList(),
+          ],
+        ),
       ),
     );
   }

@@ -2,88 +2,63 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static const Color primaryColor = Color(0xFF1565C0);
-  static const Color secondaryColor = Color(0xFF42A5F5);
-  static const Color accentColor = Color(0xFF00E676);
-  static const Color backgroundColorLight = Color(0xFFF5F7FA);
-  static const Color backgroundColorDark = Color(0xFF0D1117);
-  static const Color cardColorDark = Color(0xFF161B22);
-  static const Color surfaceColorDark = Color(0xFF0D1117);
-
-  static ThemeData get lightTheme {
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.light,
-      primaryColor: primaryColor,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryColor,
-        primary: primaryColor,
-        secondary: secondaryColor,
-        tertiary: accentColor,
-        surface: Colors.white,
-      ),
-      scaffoldBackgroundColor: backgroundColorLight,
-      textTheme: GoogleFonts.poppinsTextTheme().copyWith(
-        displayLarge: GoogleFonts.orbitron(fontWeight: FontWeight.bold),
-        displayMedium: GoogleFonts.orbitron(fontWeight: FontWeight.bold),
-        displaySmall: GoogleFonts.orbitron(fontWeight: FontWeight.bold),
-        headlineLarge: GoogleFonts.orbitron(fontWeight: FontWeight.bold),
-        headlineMedium: GoogleFonts.orbitron(fontWeight: FontWeight.bold),
-        headlineSmall: GoogleFonts.orbitron(fontWeight: FontWeight.bold),
-      ),
-      cardTheme: CardThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        elevation: 0,
-        color: Colors.white,
-      ),
-    );
-  }
+  static const Color backgroundColor = Color(0xFF0D0D0D);
+  static const Color surfaceColor = Color(0xFF1A1A1A);
+  static const Color accentColor = Color(0xFF39FF14); // Electric Green
+  static const Color secondaryAccentColor = Color(0xFF00E5FF); // AI Cyan
+  static const Color textPrimary = Colors.white;
+  static const Color textSecondary = Colors.white70;
 
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
       brightness: Brightness.dark,
-      primaryColor: primaryColor,
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: primaryColor,
-        brightness: Brightness.dark,
-        primary: primaryColor,
-        secondary: secondaryColor,
-        tertiary: accentColor,
-        surface: surfaceColorDark,
+      scaffoldBackgroundColor: backgroundColor,
+      primaryColor: accentColor,
+      colorScheme: const ColorScheme.dark(
+        primary: accentColor,
+        secondary: secondaryAccentColor,
+        surface: surfaceColor,
+        onSurface: textPrimary,
       ),
-      scaffoldBackgroundColor: backgroundColorDark,
-      textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme)
+      textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme)
           .copyWith(
-            displayLarge: GoogleFonts.orbitron(
+            displayLarge: GoogleFonts.inter(
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: textPrimary,
             ),
-            displayMedium: GoogleFonts.orbitron(
+            headlineLarge: GoogleFonts.inter(
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: textPrimary,
             ),
-            displaySmall: GoogleFonts.orbitron(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+            titleLarge: GoogleFonts.inter(
+              fontWeight: FontWeight.w600,
+              color: textPrimary,
             ),
-            headlineLarge: GoogleFonts.orbitron(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-            headlineMedium: GoogleFonts.orbitron(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-            headlineSmall: GoogleFonts.orbitron(
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+            bodyLarge: GoogleFonts.inter(color: textPrimary),
+            bodyMedium: GoogleFonts.inter(color: textSecondary),
           ),
       cardTheme: CardThemeData(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        color: surfaceColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         elevation: 0,
-        color: cardColorDark,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: backgroundColor,
+        elevation: 0,
+        centerTitle: false,
+        titleTextStyle: TextStyle(
+          color: textPrimary,
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: surfaceColor,
+        indicatorColor: accentColor.withValues(alpha: 0.2),
+        labelTextStyle: WidgetStateProperty.all(
+          const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        ),
       ),
     );
   }

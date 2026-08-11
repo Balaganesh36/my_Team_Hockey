@@ -1,5 +1,7 @@
 class AppConstants {
-  static const String appName = 'My Team Hockey';
+  static const String appName = 'AI Hockey Intelligence';
+  static const String tagline =
+      'One platform to create, stream, analyze, and learn hockey matches with AI';
 
   static const List<Map<String, dynamic>> players = [
     {
@@ -8,8 +10,9 @@ class AppConstants {
       'position': 'Defender',
       'age': 22,
       'bio': 'Solid defender, Known for strong tackles and leadership!!',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.10.04_690a20a6.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.10.04_690a20a6.jpg',
+      'rating': '9.2',
     },
     {
       'name': 'Bala',
@@ -17,8 +20,9 @@ class AppConstants {
       'position': 'Right Off',
       'age': 19,
       'bio': 'Versatile center who contributes on both offense and defense.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 11.52.53_072bebbe.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 11.52.53_072bebbe.jpg',
+      'rating': '8.8',
     },
     {
       'name': 'Selvam',
@@ -26,8 +30,9 @@ class AppConstants {
       'position': 'Goalkeeper',
       'age': 22,
       'bio': 'Reliable goalkeeper with quick reflexes.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.11.55_3b190d7b.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.11.55_3b190d7b.jpg',
+      'rating': '8.5',
     },
     {
       'name': 'Bharathi dhasan',
@@ -35,8 +40,9 @@ class AppConstants {
       'position': 'Forward',
       'age': 19,
       'bio': 'Fast and skilled forward with a powerful shot.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 11.52.53_66396314.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 11.52.53_66396314.jpg',
+      'rating': '8.9',
     },
     {
       'name': 'Bharathi kanan',
@@ -44,8 +50,9 @@ class AppConstants {
       'position': 'Forward',
       'age': 19,
       'bio': 'Agile attacker known for quick breaks and accurate finishing.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 11.52.53_84000915.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 11.52.53_84000915.jpg',
+      'rating': '8.7',
     },
     {
       'name': 'Dhiwakar',
@@ -53,8 +60,9 @@ class AppConstants {
       'position': 'Defenseman',
       'age': 22,
       'bio': 'Reliable last line of defense with quick reflexes and composure.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.13.27_4f3d50c1.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.13.27_4f3d50c1.jpg',
+      'rating': '8.4',
     },
     {
       'name': 'Thava Vishwa',
@@ -62,8 +70,9 @@ class AppConstants {
       'position': 'Forward',
       'age': 21,
       'bio': 'Fast and agile forward with a powerful shot.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.15.15_04bfdb71.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.15.15_04bfdb71.jpg',
+      'rating': '8.6',
     },
     {
       'name': 'Anand',
@@ -72,8 +81,9 @@ class AppConstants {
       'age': 21,
       'bio':
           'Hard-working midfielder who links defense and attack effectively.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.16.53_1db071d3.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.16.53_1db071d3.jpg',
+      'rating': '8.3',
     },
     {
       'name': 'Vigneshwarn',
@@ -81,8 +91,9 @@ class AppConstants {
       'position': 'Defenseman',
       'age': 22,
       'bio': 'Reliable defenseman who excels at blocking shots.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.16.53_772a44e7.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.16.53_772a44e7.jpg',
+      'rating': '8.5',
     },
     {
       'name': 'Arunraj',
@@ -90,8 +101,9 @@ class AppConstants {
       'position': 'Forward',
       'age': 18,
       'bio': 'Fast and agile forward with a powerful shot.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.23.44_b0647740.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.23.44_b0647740.jpg',
+      'rating': '8.2',
     },
     {
       'name': 'Gowtham',
@@ -99,8 +111,9 @@ class AppConstants {
       'position': 'Defenseman',
       'age': 20,
       'bio': 'Stalwart defender who shuts down attackers.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.16.54_a3f57636.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.16.54_a3f57636.jpg',
+      'rating': '8.4',
     },
     {
       'name': 'Abinesh',
@@ -109,8 +122,9 @@ class AppConstants {
       'age': 20,
       'bio':
           'Hard-working midfielder who links defense and attack effectively.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.42.06_512c4d63.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.42.06_512c4d63.jpg',
+      'rating': '8.1',
     },
     {
       'name': 'Krithick',
@@ -118,8 +132,9 @@ class AppConstants {
       'position': 'Goalkeeper',
       'age': 22,
       'bio': 'Reliable goalkeeper with quick reflexes.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.42.14_3775dfae.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.42.14_3775dfae.jpg',
+      'rating': '8.5',
     },
     {
       'name': 'Selvaganapathy',
@@ -127,8 +142,9 @@ class AppConstants {
       'position': 'Forward',
       'age': 18,
       'bio': 'Agile attacker known for quick breaks and accurate finishing.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.44.20_2a002fa7.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.44.20_2a002fa7.jpg',
+      'rating': '8.3',
     },
     {
       'name': 'Dhineshkumar',
@@ -136,8 +152,9 @@ class AppConstants {
       'position': 'Forward',
       'age': 20,
       'bio': 'Fast and agile forward with a powerful shot.',
-      "image":
-          "assets/images/WhatsApp Image 2025-07-24 at 12.46.09_9c078f15.jpg",
+      'image':
+          'assets/images/WhatsApp Image 2025-07-24 at 12.46.09_9c078f15.jpg',
+      'rating': '8.4',
     },
   ];
 

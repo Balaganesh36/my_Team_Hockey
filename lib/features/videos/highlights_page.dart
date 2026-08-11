@@ -17,7 +17,7 @@ class HighlightsPage extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(bottom: 20),
             child: VideoCard(
-              highlight: highlight,
+              video: highlight,
               onTap: () {
                 Navigator.push(
                   context,
