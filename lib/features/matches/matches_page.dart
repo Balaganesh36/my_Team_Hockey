@@ -68,16 +68,30 @@ class _MatchesPageState extends State<MatchesPage>
       padding: const EdgeInsets.all(20),
       itemCount: 5,
       itemBuilder: (context, index) {
-        return MatchCard(
-          match: {
-            'homeTeam': index % 2 == 0 ? 'PPG' : 'TIGERS',
-            'awayTeam': index % 2 == 0 ? 'LIONS' : 'HAWKS',
-            'score': isLive ? '1 - 1' : '0 - 0',
-            'competition': 'Local Tournament',
-            'location': 'PPG Hockey Ground',
-          },
-          isHero: isLive && index == 0,
-        );
+        final matchData = {
+          'homeTeam': index % 2 == 0 ? 'PPG' : 'TIGERS',
+          'homeScore': isLive ? (index + 1).toString() : '0',
+          'awayTeam': index % 2 == 0 ? 'LIONS' : 'HAWKS',
+          'awayScore': isLive ? index.toString() : '0',
+          'score': isLive ? '1 - 1' : '0 - 0',
+          'competition': 'Local Tournament',
+          'location': 'PPG Hockey Ground',
+          'period': 'Q${(index % 4) + 1}',
+          'time': '${(index * 2) + 10}:15',
+        };
+
+        if (isLive) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: LiveMatchCard(
+              match: matchData,
+              onWatchLive: () {},
+              onDetails: () {},
+            ),
+          );
+        }
+
+        return MatchCard(match: matchData);
       },
     );
   }
