@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/widgets/app_widgets.dart';
+import '../matches/create_match_page.dart';
+import '../matches/live_match_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -29,7 +31,14 @@ class HomePage extends StatelessWidget {
                   'competition': 'Local Tournament',
                   'location': 'PPG Hockey Ground',
                 },
-                onWatchLive: () {},
+                onWatchLive: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LiveMatchPage(),
+                    ),
+                  );
+                },
                 onDetails: () {},
               ),
 
@@ -42,14 +51,28 @@ class HomePage extends StatelessWidget {
                       icon: Icons.add_rounded,
                       title: 'CREATE MATCH',
                       subtitle: 'Start a new match',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CreateMatchPage(),
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(width: 12),
                     QuickActionCard(
                       icon: Icons.sensors_rounded,
                       title: 'GO LIVE',
                       subtitle: 'Start live coverage',
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LiveMatchPage(),
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(width: 12),
                     QuickActionCard(

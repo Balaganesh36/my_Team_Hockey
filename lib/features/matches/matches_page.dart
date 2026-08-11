@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/widgets/app_widgets.dart';
+import 'live_match_page.dart';
+import 'create_match_page.dart';
 
 class MatchesPage extends StatefulWidget {
   const MatchesPage({super.key});
@@ -56,7 +58,12 @@ class _MatchesPageState extends State<MatchesPage>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreateMatchPage()),
+          );
+        },
         backgroundColor: const Color(0xFF39FF14),
         child: const Icon(Icons.add, color: Colors.black),
       ),
@@ -85,7 +92,14 @@ class _MatchesPageState extends State<MatchesPage>
             padding: const EdgeInsets.only(bottom: 16),
             child: LiveMatchCard(
               match: matchData,
-              onWatchLive: () {},
+              onWatchLive: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LiveMatchPage(),
+                  ),
+                );
+              },
               onDetails: () {},
             ),
           );
