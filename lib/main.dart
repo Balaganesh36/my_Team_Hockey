@@ -45,7 +45,10 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_selectedIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: _pages[_selectedIndex],
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) {
@@ -56,22 +59,36 @@ class _MainScreenState extends State<MainScreen> {
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.grid_view_rounded),
+            selectedIcon: Icon(
+              Icons.grid_view_rounded,
+              color: Color(0xFF39FF14),
+            ),
             label: 'Home',
           ),
           NavigationDestination(
             icon: Icon(Icons.sports_hockey_rounded),
+            selectedIcon: Icon(
+              Icons.sports_hockey_rounded,
+              color: Color(0xFF39FF14),
+            ),
             label: 'Matches',
           ),
           NavigationDestination(
             icon: Icon(Icons.groups_rounded),
+            selectedIcon: Icon(Icons.groups_rounded, color: Color(0xFF39FF14)),
             label: 'Players',
           ),
           NavigationDestination(
             icon: Icon(Icons.psychology_rounded),
+            selectedIcon: Icon(
+              Icons.psychology_rounded,
+              color: Color(0xFF39FF14),
+            ),
             label: 'AI',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_rounded),
+            selectedIcon: Icon(Icons.person_rounded, color: Color(0xFF39FF14)),
             label: 'Profile',
           ),
         ],
