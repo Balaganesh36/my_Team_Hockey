@@ -86,70 +86,8 @@ class HomePage extends StatelessWidget {
               ),
 
               const SizedBox(height: 32),
-              _buildSectionHeader('AI MATCH INSIGHTS', onViewAll: () {}),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: const [
-                    AIInsightCard(
-                      category: 'AI Insight',
-                      time: '2 min ago',
-                      title: 'Performance Spike',
-                      content:
-                          '+12% team speed in the second half compared to season average.',
-                      icon: Icons.trending_up_rounded,
-                    ),
-                    AIInsightCard(
-                      category: 'Tactical',
-                      time: '15 min ago',
-                      title: 'Tactical Shift',
-                      content:
-                          'Opposition changed to a 3-4-3 formation. Defensive response required.',
-                      icon: Icons.psychology_rounded,
-                    ),
-                    AIInsightCard(
-                      category: 'Defense',
-                      time: '20 min ago',
-                      title: 'Defensive Alert',
-                      content:
-                          'Right-side defensive pressure increased during Q3.',
-                      icon: Icons.security_rounded,
-                    ),
-                  ],
-                ),
-              ),
 
-              const SizedBox(height: 32),
-              _buildSectionHeader('LIVE STATISTICS'),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    StatCard(
-                      label: 'Possession',
-                      value: '54%',
-                      icon: Icons.pie_chart_outline_rounded,
-                    ),
-                    StatCard(
-                      label: 'Shots',
-                      value: '18',
-                      icon: Icons.sports_hockey_rounded,
-                    ),
-                    StatCard(
-                      label: 'On Target',
-                      value: '11',
-                      icon: Icons.track_changes_rounded,
-                    ),
-                    StatCard(
-                      label: 'P. Corners',
-                      value: '6',
-                      icon: Icons.flag_outlined,
-                    ),
-                  ],
-                ),
-              ),
-
+              // AI Match Insights and Live Statistics sections removed
               const SizedBox(height: 32),
               _buildSectionHeader('UPCOMING MATCHES'),
               SizedBox(
