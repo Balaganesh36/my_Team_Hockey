@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/widgets/app_widgets.dart';
+import '../tournaments/screens/my_tournaments_page.dart';
 import 'live_match_page.dart';
 import 'create_match_page.dart';
 
@@ -26,6 +27,21 @@ class _MatchesPageState extends State<MatchesPage>
       appBar: ModernAppBar(
         title: 'Match Center',
         actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.emoji_events_outlined,
+              color: Color(0xFF39FF14),
+            ),
+            tooltip: 'My Tournaments',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MyTournamentsPage(),
+                ),
+              );
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.calendar_today_rounded),
             onPressed: () {},

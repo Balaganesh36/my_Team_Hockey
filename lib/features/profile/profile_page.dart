@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../shared/widgets/app_widgets.dart';
+import '../tournaments/screens/my_tournaments_page.dart';
+import '../tournaments/screens/register_tournament_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -27,24 +29,62 @@ class ProfilePage extends StatelessWidget {
               style: TextStyle(color: Colors.white54),
             ),
             const SizedBox(height: 32),
-            _buildProfileGroup('Account', [
+            _buildProfileGroup(context, 'Tournaments & Registration', [
               _buildProfileItem(
+                context,
+                Icons.emoji_events_outlined,
+                'My Registered Tournaments',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MyTournamentsPage(),
+                    ),
+                  );
+                },
+              ),
+              _buildProfileItem(
+                context,
+                Icons.app_registration_rounded,
+                'Register New Tournament',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const RegisterTournamentPage(),
+                    ),
+                  );
+                },
+              ),
+            ]),
+            _buildProfileGroup(context, 'Account', [
+              _buildProfileItem(
+                context,
                 Icons.person_outline_rounded,
                 'Personal Information',
               ),
-              _buildProfileItem(Icons.security_rounded, 'Security'),
+              _buildProfileItem(context, Icons.security_rounded, 'Security'),
             ]),
-            _buildProfileGroup('Preferences', [
+            _buildProfileGroup(context, 'Preferences', [
               _buildProfileItem(
+                context,
                 Icons.notifications_none_rounded,
                 'Notifications',
               ),
-              _buildProfileItem(Icons.language_rounded, 'Language'),
-              _buildProfileItem(Icons.dark_mode_outlined, 'Appearance'),
+              _buildProfileItem(context, Icons.language_rounded, 'Language'),
+              _buildProfileItem(
+                context,
+                Icons.dark_mode_outlined,
+                'Appearance',
+              ),
             ]),
-            _buildProfileGroup('Support', [
-              _buildProfileItem(Icons.help_outline_rounded, 'Help Center'),
-              _buildProfileItem(Icons.info_outline_rounded, 'About'),
+            _buildProfileGroup(context, 'Support', [
+              _buildProfileItem(
+                context,
+                Icons.help_outline_rounded,
+                'Help Center',
+              ),
+              _buildProfileItem(context, Icons.info_outline_rounded, 'About'),
             ]),
             const SizedBox(height: 20),
             TextButton(
@@ -63,7 +103,11 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileGroup(String title, List<Widget> items) {
+  Widget _buildProfileGroup(
+    BuildContext context,
+    String title,
+    List<Widget> items,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -90,12 +134,17 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileItem(IconData icon, String label) {
+  Widget _buildProfileItem(
+    BuildContext context,
+    IconData icon,
+    String label, {
+    VoidCallback? onTap,
+  }) {
     return ListTile(
       leading: Icon(icon, color: Colors.white70, size: 20),
       title: Text(label, style: const TextStyle(fontSize: 14)),
       trailing: const Icon(Icons.chevron_right_rounded, color: Colors.white24),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }

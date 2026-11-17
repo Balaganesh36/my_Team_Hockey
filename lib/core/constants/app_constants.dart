@@ -3,6 +3,68 @@ class AppConstants {
   static const String tagline =
       'One platform to create, stream, analyze, and learn hockey matches with AI';
 
+  static List<Map<String, dynamic>> getTodaysLiveMatches() {
+    final String todayDate = DateTime.now().toIso8601String().substring(0, 10);
+    return [
+      {
+        'id': 'M-TODAY-01',
+        'homeTeam': 'PPG',
+        'homeScore': '3',
+        'awayTeam': 'TIGERS',
+        'awayScore': '2',
+        'status': 'LIVE',
+        'period': 'Q3',
+        'time': '42:18',
+        'competition': 'Local Tournament',
+        'location': 'PPG Hockey Ground',
+        'date': todayDate,
+        'startTime': '10:00 AM',
+      },
+      {
+        'id': 'M-TODAY-02',
+        'homeTeam': 'KCT',
+        'homeScore': '1',
+        'awayTeam': 'LIONS',
+        'awayScore': '1',
+        'status': 'LIVE',
+        'period': 'Q2',
+        'time': '24:05',
+        'competition': 'Zone 11 Qualifier',
+        'location': 'KCT Turf Ground',
+        'date': todayDate,
+        'startTime': '11:30 AM',
+      },
+      {
+        'id': 'M-TODAY-03',
+        'homeTeam': 'UIT',
+        'homeScore': '0',
+        'awayTeam': 'SNS',
+        'awayScore': '0',
+        'status': 'UPCOMING',
+        'period': 'Q1',
+        'time': '00:00',
+        'competition': 'Inter-College Cup',
+        'location': 'Suguna College Turf',
+        'date': todayDate,
+        'startTime': '03:00 PM',
+      },
+      {
+        'id': 'M-TODAY-04',
+        'homeTeam': 'PAVAI',
+        'homeScore': '4',
+        'awayTeam': 'PSG',
+        'awayScore': '2',
+        'status': 'COMPLETED',
+        'period': 'FT',
+        'time': '70:00',
+        'competition': 'Friendly Series',
+        'location': 'PSG Sports Complex',
+        'date': todayDate,
+        'startTime': '08:00 AM',
+      },
+    ];
+  }
+
   static const List<Map<String, dynamic>> players = [
     {
       'name': 'Akshay(Captain)',
